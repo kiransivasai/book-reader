@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: rgb(39, 39, 39);
+}
+.App {
+  height: 100vh;
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+  }
+}

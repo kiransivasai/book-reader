@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.book-read {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  .book-input {
+    width: 40%;
+    height: 250px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid $white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+    background: $primary;
+    color: #fff;
+  }
+  .book-btn {
+    background: $primary;
+    color: $white;
+    outline: none;
+    border: 1px solid $white;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
