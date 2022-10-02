@@ -1,21 +1,22 @@
-import axios from "axios";
 import React, { useState } from "react";
 import "./BookRead.scss";
 
 const BookRead = () => {
   const [bookInput, setBookInput] = useState("");
-  const [audioURI, setAudioURI] = useState("");
-  const readBook = async () => {
-    const response = await axios.post("http://localhost:5000/get_audio", {
-      text: bookInput,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      responseType: "blob",
-    });
-    const audioUrl = window.URL.createObjectURL(new Blob([response.data]));
-    setAudioURI(audioUrl);
-    console.log(audioUrl);
+  const [paused, setPaused] = useState(false);
+  const msg = new SpeechSynthesisUtterance();
+
+  const toogleReading = (e) => {
+    if (paused) {
+      window.speechSynthesis.resume();
+    } else {
+      window.speechSynthesis.pause();
+    }
+    setPaused(!paused);
+  };
+  const startReading = async () => {
+    msg.text = bookInput;
+    window.speechSynthesis.speak(msg);
   };
   return (
     <div className="book-read">
@@ -27,15 +28,17 @@ const BookRead = () => {
         value={bookInput}
         onChange={(e) => setBookInput(e.target.value)}
       />
-      <button className="book-btn" onClick={(e) => readBook(e)}>
-        Play
-      </button>
-      {!!audioURI && (
-        <audio controls src={audioURI}>
-          Your browser does not support the
-          <code>audio</code> element.
-        </audio>
-      )}
+      <div className="book-play-options">
+        <button
+          className={`book-btn ${paused ? "btn-resume" : "btn-pause"}`}
+          onClick={(e) => toogleReading(e)}
+        >
+          {paused ? "Resume" : "Pause"}
+        </button>
+        <button className="book-btn btn-start" onClick={(e) => startReading(e)}>
+          Start
+        </button>
+      </div>
     </div>
   );
 };

@@ -18,15 +18,29 @@
     background: $primary;
     color: #fff;
   }
-  .book-btn {
-    background: $primary;
-    color: $white;
-    outline: none;
-    border: 1px solid $white;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
+  .book-play-options {
+    display: flex;
+    justify-content: center;
+    .book-btn {
+      background: $primary;
+      color: $white;
+      outline: none;
+      border: 1px solid $white;
+      margin-top: 20px;
+      border-radius: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .btn-start {
+      background: rgba(27, 205, 48, 0.5);
+    }
+    .btn-pause {
+      background: rgba(231, 52, 55, 0.5);
+    }
+    .btn-resume {
+      background: rgba(16, 16, 232, 0.5);
+    }
   }
 }
